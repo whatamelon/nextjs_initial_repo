@@ -1,1 +1,2 @@
-pnpm test
+npx lint-staged --concurrent false --relative
+echo "OK. COMMIT. DONE."

@@ -1,16 +1,30 @@
-const { FlatCompat } = require('@eslint/eslintrc')
-const js = require('@eslint/js')
-const typescriptEslintParser = require('@typescript-eslint/parser')
-const globals = require('globals')
+import { FlatCompat } from '@eslint/eslintrc'
+import { dirname } from 'path'
+import js from '@eslint/js'
+import typescriptEslintEslintPlugin from '@typescript-eslint/eslint-plugin'
+import eslintPluginReact from 'eslint-plugin-react'
+import eslintPluginPrettier from 'eslint-plugin-prettier'
+import eslintPluginSimpleImportSort from 'eslint-plugin-simple-import-sort'
+import eslintPluginImport from 'eslint-plugin-import'
+import typescriptEslintParser from '@typescript-eslint/parser'
 
 const compat = new FlatCompat({
-  baseDirectory: __dirname,
+  baseDirectory: dirname.baseDirectory,
   recommendedConfig: js.configs.recommended,
 })
 
-module.exports = [
+export default [
   js.configs.recommended,
   ...compat.extends('airbnb', 'airbnb-typescript', 'plugin:@typescript-eslint/recommended', 'prettier'),
+  {
+    plugins: {
+      '@typescript-eslint': typescriptEslintEslintPlugin,
+      react: eslintPluginReact,
+      prettier: eslintPluginPrettier,
+      'simple-import-sort': eslintPluginSimpleImportSort,
+      import: eslintPluginImport,
+    },
+  },
   {
     languageOptions: {
       parser: typescriptEslintParser,
@@ -18,13 +32,15 @@ module.exports = [
         ecmaVersion: 'latest',
         sourceType: 'module',
         project: './tsconfig.json',
+        tsconfigRootDir: dirname.baseDirectory,
       },
-      globals: { ...globals.browser, ...globals.node },
     },
   },
   {
     rules: {
-      '@typescript-eslint/explicit-module-boundary-types': ['error'],
+      "@typescript-eslint/explicit-module-boundary-types": "off",
+      '@typescript-eslint/lines-between-class-members': 'off',
+      '@typescript-eslint/no-throw-literal': 'off',
       'import/extensions': 'off',
       'import/no-unresolved': 'off',
       'import/no-extraneous-dependencies': 'off',
@@ -67,20 +83,6 @@ module.exports = [
     rules: {
       'simple-import-sort/imports': 'warn',
       'simple-import-sort/exports': 'warn',
-      '@nx/enforce-module-boundaries': [
-        'error',
-        {
-          enforceBuildableLibDependency: true,
-          allowCircularSelfDependency: true,
-          allow: [],
-          depConstraints: [
-            {
-              sourceTag: '*',
-              onlyDependOnLibsWithTags: ['*'],
-            },
-          ],
-        },
-      ],
       'react/require-default-props': 0,
       'jsx-a11y/label-has-associated-control': [
         2,
@@ -97,5 +99,5 @@ module.exports = [
       ...config.rules,
     },
   })),
-  { ignores: ['**/*/next.config.js', './.lint-staged.config.js', 'apps/**/.next/**/*'] },
+  { ignores: ['./next.config.js', '.next/**/*', 'eslint.config.mjs', '*.config.js'] },
 ]

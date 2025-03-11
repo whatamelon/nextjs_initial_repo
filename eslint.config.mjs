@@ -38,6 +38,7 @@ export default [
   },
   {
     rules: {
+      "react/jsx-props-no-spreading": 0,
       "@typescript-eslint/explicit-module-boundary-types": "off",
       '@typescript-eslint/lines-between-class-members': 'off',
       '@typescript-eslint/no-throw-literal': 'off',
@@ -70,7 +71,9 @@ export default [
       'no-param-reassign': ['error', { props: false }],
       'global-require': 0,
       'no-underscore-dangle': ['error', { allow: ['_data'] }],
-      'object-curly-newline': ['error', { multiline: true }],
+      'object-curly-newline': ['error', {
+        "ObjectExpression": { "multiline": true, "minProperties": 1 },
+      }],
       'operator-linebreak': 'off',
       'simple-import-sort/imports': 'error',
       'simple-import-sort/exports': 'error',

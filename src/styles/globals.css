@@ -1,0 +1,103 @@
+@import 'tailwindcss';
+@import './font.css';
+@import './colors.css';
+@impott './badge.css';
+@impott './button.css';
+
+root {
+  --background: #ffffff;
+  --foreground: #171717;
+  /* root - 기본 라이트모드로 설정 */
+  color-scheme: light only;
+}
+
+html {
+  /* 전역 폰트 설정 : Pretendard */
+  font-family: Pretendard;
+  background-color: white;
+  color: black;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* 드래그시 배경 및 폰트 색상 변경 */
+::-moz-selection {
+  background: #d1d5db !important;
+  color: #1f2937 !important;
+}
+::selection {
+  background: #d1d5db !important;
+  color: #1f2937 !important;
+}
+
+/* input 색상 변경 */
+input {
+  background-color: #fff;
+  color: #222;
+}
+
+/* 다크모드 대응 */
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: light;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  html {
+    color-scheme: light;
+  }
+}
+
+/* a tag highlight 제거 */
+a {
+  text-decoration: none;
+}
+
+/* input tag outline 제거 */
+input,
+textarea {
+  @apply appearance-none outline-none;
+}
+
+/* 가로 스크롤 안보이게 */
+.no-scroll {
+  -ms-overflow-style: none; /* IE, Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.no-scroll::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* input number arrow 안보이게 */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}

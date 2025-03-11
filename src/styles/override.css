@@ -1,0 +1,46 @@
+/* OVERRIDE CSS */
+/* Replace css variables in exist utilities */
+
+@theme {
+  /* BREAK POINT */
+  --breakpoint-md: '768px';
+
+  /* FONT SIZE */
+  --text-xxs: '8px';
+  --text-xs: '10px';
+  --text-sm: '12px';
+  --text-tiny: '14px';
+  --text-base: '16px';
+  --text-lg: '18px';
+  --text-20xl: '20px';
+  --text-24xl: '24px';
+  --text-28xl: '28px';
+  --text-32xl: '32px';
+  --text-36xl: '36px';
+  --text-40xl: '40px';
+
+  /* BORDER WIDTH */
+  --border-width-DEFAULT: '1px';
+  --border-width-0: '1px';
+  --border-width-2: '2px';
+  --border-width-3: '3px';
+  --border-width-4: '4px';
+  --border-width-6: '6px';
+  --border-width-8: '8px';
+
+  /* BORDER RADIUS */
+  --radius-none: '0px';
+  --radius-sm: '2px';
+  --radius-DEFAULT: '4px';
+  --radius-md: '6px';
+  --radius-lg: '8px';
+  --radius-xl: '12px';
+  --radius-2xl: '16px';
+  --radius-3xl: '24px';
+  --radius-3_5xl: '28px';
+  --radius-4xl: '30px';
+  --radius-full: '9999px';
+
+  /* LETTER SPACING */
+  --tracking-base: '-.6px';
+}

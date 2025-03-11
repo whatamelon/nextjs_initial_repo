@@ -3,7 +3,7 @@
 import { cva, type VariantProps } from 'class-variance-authority'
 import * as React from 'react'
 
-import { cn } from '../utils'
+import { cn } from './utils'
 
 const textfieldVariants = cva(
   'text-body-1-r focus:text-black h-[52px] focus-visible:text-black focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background border rounded-none bg-background placeholder:text-gray-400 text-black flex w-full p-4',

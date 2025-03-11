@@ -1,8 +1,8 @@
 @import 'tailwindcss';
-@import './font.css';
-@import './colors.css';
-@impott './badge.css';
-@impott './button.css';
+@source './font.css';
+@source './colors.css';
+@source './badge.css';
+@source './button.css';
 
 root {
   --background: #ffffff;
